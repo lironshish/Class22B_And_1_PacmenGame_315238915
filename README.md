@@ -8,5 +8,4 @@
 
 ### Live example of the game:
 
-https://user-images.githubusercontent.com/62293320/162138852-8f1d2f29-27e6-4f97-a6ad-4bea94cf237a.mp4
 
