@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Activity_Menu">
+
+    <ImageView
+        android:id="@+id/menu_IMG_background"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:scaleType="fitXY"
+        android:src="@drawable/ic_sea_background" />
+
+    <TextView
+        android:id="@+id/menu_LBL_Welcome"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Welcome to Pacman Game!"
+        android:layout_centerHorizontal="true"
+        android:textColor="#1F378A"
+        android:textSize="30dp" />
+
+    <Button
+        android:id="@+id/menu_BTN_Records_list"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/menu_LBL_Welcome"
+        android:layout_centerInParent="true"
+        android:backgroundTint="#4FB8AD"
+        android:text="Records LIST"
+        />
+    <Button
+        android:id="@+id/menu_BTN_buttons_game"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/menu_BTN_Records_list"
+        android:layout_centerInParent="true"
+        android:backgroundTint="#4FB8AD"
+        android:text="Buttons Game"
+
+        />
+
+    <Button
+        android:id="@+id/menu_BTN_Sensor_game"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/menu_BTN_buttons_game"
+        android:layout_centerInParent="true"
+        android:backgroundTint="#4FB8AD"
+        android:text="Sensor Game" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:src="@drawable/ic_reef" />
+
+</RelativeLayout>

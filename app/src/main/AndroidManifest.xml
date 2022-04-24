@@ -10,7 +10,7 @@
         android:supportsRtl="false"
         android:theme="@style/Theme.Class22B_And_1_PacmenGame_315238915">
         <activity
-            android:name=".Activity_Panel"
+            android:name=".Rec_List"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -18,6 +18,18 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".Activity_Menu"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".Activity_Panel"
+            android:exported="true" />
     </application>
 
 </manifest>
