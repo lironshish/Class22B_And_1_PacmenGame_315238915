@@ -227,6 +227,7 @@ public class Activity_Panel extends AppCompatActivity {
         if(stepDetector.getStepCount()%10==0){
             AddRandomCoin();
         }
+        updateScore();
         checkIfCrash();
 
     }
@@ -335,7 +336,7 @@ public class Activity_Panel extends AppCompatActivity {
             if(gameManager.getLives()>1) {
                 gameManager.reduceLives();
                 panel_IMG_snails[gameManager.getLives()].setVisibility(View.INVISIBLE);
-                Toast.makeText(this,"BOOM",Toast.LENGTH_LONG).show();
+                Toast.makeText(this,"BOOM",Toast.LENGTH_SHORT).show();
                 //Returning the players to the starting point
                 setPlayersOnStartingPoint();
 
@@ -344,7 +345,7 @@ public class Activity_Panel extends AppCompatActivity {
                 panel_IMG_snails[0].setVisibility(View.INVISIBLE);
                 stopTimer();
                 panelGame[player.getX()][player.getY()].setVisibility(View.INVISIBLE);
-                Toast.makeText(this,"Game Over",Toast.LENGTH_LONG).show();
+                Toast.makeText(this,"Game Over",Toast.LENGTH_SHORT).show();
                 panel_IMG_game_over.setVisibility(View.VISIBLE);
 
                 Handler handler = new Handler();
@@ -389,6 +390,30 @@ public class Activity_Panel extends AppCompatActivity {
 
     }
 
+
+
+ private void updateScore() {
+     if ((coin.getCoin_x() == player.getX()) && (coin.getCoin_y() == player.getY())){
+         counter += 50;
+         main_LBL_time.setText("" + counter);
+         Toast.makeText(this,"+50",Toast.LENGTH_SHORT).show();
+         stepDetector.setStepCount(0);
+
+     }
+     if ((coin.getCoin_x() == rival.getX()) && (coin.getCoin_y() == rival.getY())){
+         if(counter<50)
+             counter = 0;
+         else
+             counter-=50;
+         Toast.makeText(this,"Oh No...",Toast.LENGTH_SHORT).show();
+         stepDetector.setStepCount(0);
+     }
+
+
+
+
+
+    }
 
 
 }
