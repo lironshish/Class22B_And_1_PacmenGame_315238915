@@ -19,6 +19,7 @@
         android:layout_height="wrap_content"
         android:text="Welcome to Pacman Game!"
         android:layout_centerHorizontal="true"
+        android:gravity="center"
         android:textColor="#1F378A"
         android:textSize="30dp" />
 
