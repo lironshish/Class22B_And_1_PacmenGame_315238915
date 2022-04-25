@@ -85,12 +85,13 @@ public class Activity_Panel extends AppCompatActivity {
 
         //Panel
         panelGame = new ImageView[][]{
-                {findViewById(R.id.panel_IMG_00),findViewById(R.id.panel_IMG_01),findViewById(R.id.panel_IMG_02)},
-                {findViewById(R.id.panel_IMG_10),findViewById(R.id.panel_IMG_11),findViewById(R.id.panel_IMG_12)},
-                {findViewById(R.id.panel_IMG_20),findViewById(R.id.panel_IMG_21),findViewById(R.id.panel_IMG_22)},
-                {findViewById(R.id.panel_IMG_30),findViewById(R.id.panel_IMG_31),findViewById(R.id.panel_IMG_32)},
-                {findViewById(R.id.panel_IMG_40),findViewById(R.id.panel_IMG_41),findViewById(R.id.panel_IMG_42)},
-
+                {findViewById(R.id.panel_IMG_00),findViewById(R.id.panel_IMG_01),findViewById(R.id.panel_IMG_02),findViewById(R.id.panel_IMG_03),findViewById(R.id.panel_IMG_04)},
+                {findViewById(R.id.panel_IMG_10),findViewById(R.id.panel_IMG_11),findViewById(R.id.panel_IMG_12),findViewById(R.id.panel_IMG_13),findViewById(R.id.panel_IMG_14)},
+                {findViewById(R.id.panel_IMG_20),findViewById(R.id.panel_IMG_21),findViewById(R.id.panel_IMG_22),findViewById(R.id.panel_IMG_23),findViewById(R.id.panel_IMG_24)},
+                {findViewById(R.id.panel_IMG_30),findViewById(R.id.panel_IMG_31),findViewById(R.id.panel_IMG_32),findViewById(R.id.panel_IMG_33),findViewById(R.id.panel_IMG_34)},
+                {findViewById(R.id.panel_IMG_40),findViewById(R.id.panel_IMG_41),findViewById(R.id.panel_IMG_42),findViewById(R.id.panel_IMG_43),findViewById(R.id.panel_IMG_44)},
+                {findViewById(R.id.panel_IMG_50),findViewById(R.id.panel_IMG_51),findViewById(R.id.panel_IMG_52),findViewById(R.id.panel_IMG_53),findViewById(R.id.panel_IMG_54)},
+                {findViewById(R.id.panel_IMG_60),findViewById(R.id.panel_IMG_61),findViewById(R.id.panel_IMG_62),findViewById(R.id.panel_IMG_63),findViewById(R.id.panel_IMG_64)}
         };
 
         //Snails
@@ -380,8 +381,8 @@ public class Activity_Panel extends AppCompatActivity {
     public void AddRandomCoin()
     {
         panelGame[coin.getCoin_x()][coin.getCoin_y()].setVisibility(View.INVISIBLE);
-        coin.setCoin_x((int) (Math.random() * 5));
-        coin.setCoin_y((int) (Math.random() * 3));
+        coin.setCoin_x((int) (Math.random() * gameManager.getROWS()));
+        coin.setCoin_y((int) (Math.random() * gameManager.getCOLUMNS()));
         panelGame[coin.getCoin_x()][coin.getCoin_y()].setImageResource(R.drawable.ic_starfish);
         panelGame[coin.getCoin_x()][coin.getCoin_y()].setVisibility(View.VISIBLE);
 
