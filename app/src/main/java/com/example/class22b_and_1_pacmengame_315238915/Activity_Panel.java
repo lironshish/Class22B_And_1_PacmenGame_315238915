@@ -60,6 +60,10 @@ public class Activity_Panel extends AppCompatActivity {
     //Players
     private Player player;
     private Player rival;
+    private Coin coin;
+
+    //Step Detector
+    private Step_Detector stepDetector;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -109,6 +113,7 @@ public class Activity_Panel extends AppCompatActivity {
         //Players
         player = new Player(PLAYER_START_POS_X, PLAYER_START_POS_Y,PLAYER_DIRECTION);
         rival = new Player(RIVAL_START_POS_X, RIVAL_START_POS_Y,RIVAL_DIRECTION);
+        coin = new Coin(1,1);// default
 
         //Player
         panelGame[player.getX()][player.getY()].setImageResource(R.drawable.ic_fish);
@@ -117,6 +122,10 @@ public class Activity_Panel extends AppCompatActivity {
         //Rival
         panelGame[rival.getX()][rival.getY()].setImageResource(R.drawable.ic_shark);
         panelGame[rival.getX()][rival.getY()].setVisibility(View.VISIBLE);
+
+        //Step Detector
+        stepDetector = new Step_Detector();
+        stepDetector.start();
     }
 
     private void InitArrowsButtons() {
@@ -214,7 +223,11 @@ public class Activity_Panel extends AppCompatActivity {
     public void runLogic(){
         moveRival();
         moveFish();
+        if(stepDetector.getStepCount()%10==0){
+            AddRandomCoin();
+        }
         checkIfCrash();
+
     }
 
     //Move Functions
@@ -363,6 +376,17 @@ public class Activity_Panel extends AppCompatActivity {
     }
 
 
+    // Random Coin
+    public void AddRandomCoin()
+    {
+        panelGame[coin.getCoin_x()][coin.getCoin_y()].setVisibility(View.INVISIBLE);
+        coin.setCoin_x((int) (Math.random() * 5));
+        coin.setCoin_y((int) (Math.random() * 3));
+        panelGame[coin.getCoin_x()][coin.getCoin_y()].setImageResource(R.drawable.ic_starfish);
+        panelGame[coin.getCoin_x()][coin.getCoin_y()].setVisibility(View.VISIBLE);
+
+
+    }
 
 
 
