@@ -78,11 +78,11 @@ public class Activity_Panel extends AppCompatActivity {
     private Sensors sensors;
     private SensorManager sensorManager;
     private float sensorPosition;
+    private int sensorFlag = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-      //  setContentView(R.layout.activity_buttons_game);
         if (getIntent().getBundleExtra("Bundle") != null){
             this.bundle = getIntent().getBundleExtra("Bundle");
            // gameManager.getPlayer().setPlayerName(bundle.getString("playerName"));
@@ -96,6 +96,7 @@ public class Activity_Panel extends AppCompatActivity {
             InitArrowsButtons();
         }else{
             setContentView(R.layout.activity_sensor_game);
+            sensorFlag = 1;
             InitGameView();
             sensors = new Sensors();
             initSensors();
@@ -231,7 +232,9 @@ public class Activity_Panel extends AppCompatActivity {
 
     protected void onResume() {
         super.onResume();
-        sensorManager.registerListener(accSensorEventListener, sensors.getAccSensor(), SensorManager.SENSOR_DELAY_NORMAL);
+        if(sensorFlag == 1) {
+            sensorManager.registerListener(accSensorEventListener, sensors.getAccSensor(), SensorManager.SENSOR_DELAY_NORMAL);
+        }
     }
 
     @Override
