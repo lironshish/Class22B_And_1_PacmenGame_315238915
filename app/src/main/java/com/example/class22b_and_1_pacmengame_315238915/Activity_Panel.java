@@ -1,6 +1,12 @@
 package com.example.class22b_and_1_pacmengame_315238915;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.Context;
+import android.hardware.Sensor;
+import android.hardware.SensorEvent;
+import android.hardware.SensorEventListener;
+import android.hardware.SensorManager;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
@@ -10,6 +16,7 @@ import android.widget.Toast;
 import com.google.android.material.textview.MaterialTextView;
 import java.util.Timer;
 import java.util.TimerTask;
+
 
 public class Activity_Panel extends AppCompatActivity {
     //Final Variables
@@ -26,6 +33,8 @@ public class Activity_Panel extends AppCompatActivity {
     public static int PLAYER_DIRECTION = -1;
     public static int RIVAL_DIRECTION = -1;
 
+    private String game;
+    private Bundle bundle;
     //Display Background
     private ImageView panel_IMG_background;
     //Display game over message
@@ -65,13 +74,33 @@ public class Activity_Panel extends AppCompatActivity {
     //Step Detector
     private Step_Detector stepDetector;
 
+    //Sensors
+    private Sensors sensors;
+    private SensorManager sensorManager;
+    private float sensorPosition;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_panel);
-        InitGameView();
+      //  setContentView(R.layout.activity_buttons_game);
+        if (getIntent().getBundleExtra("Bundle") != null){
+            this.bundle = getIntent().getBundleExtra("Bundle");
+           // gameManager.getPlayer().setPlayerName(bundle.getString("playerName"));
+        } else {
+            this.bundle = new Bundle();
+        }
+        game = bundle.getString("game");
+        if(game.equals("buttons")){
+            setContentView(R.layout.activity_buttons_game);
+            InitGameView();
+            InitArrowsButtons();
+        }else{
+            setContentView(R.layout.activity_sensor_game);
+            InitGameView();
+            sensors = new Sensors();
+            initSensors();
+        }
     }
-
     //Init Functions
     private void InitGameView() {
         //Background
@@ -102,15 +131,6 @@ public class Activity_Panel extends AppCompatActivity {
         };
         lives = gameManager.getMaxLives();
 
-        //Arrows
-        panel_IMG_arrows = new ImageButton[] {
-                findViewById(R.id.panel_BTN_left),
-                findViewById(R.id.panel_BTN_up),
-                findViewById(R.id.panel_BTN_down),
-                findViewById(R.id.panel_BTN_right)
-        };
-        InitArrowsButtons();
-
         //Players
         player = new Player(PLAYER_START_POS_X, PLAYER_START_POS_Y,PLAYER_DIRECTION);
         rival = new Player(RIVAL_START_POS_X, RIVAL_START_POS_Y,RIVAL_DIRECTION);
@@ -130,6 +150,13 @@ public class Activity_Panel extends AppCompatActivity {
     }
 
     private void InitArrowsButtons() {
+        //Arrows
+        panel_IMG_arrows = new ImageButton[] {
+                findViewById(R.id.panel_BTN_left),
+                findViewById(R.id.panel_BTN_up),
+                findViewById(R.id.panel_BTN_down),
+                findViewById(R.id.panel_BTN_right)
+        };
         //Each time the player changes the direction of his movement, the rival also changes the direction of his movement randomly
         //Left
         panel_IMG_arrows[0].setOnClickListener(new View.OnClickListener() {
@@ -166,6 +193,51 @@ public class Activity_Panel extends AppCompatActivity {
                 PLAYER_DIRECTION = RIGHT;
             }
         });
+    }
+
+
+    //Sensors Functions
+   public void initSensors(){
+        sensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
+        sensors.setSensorManager(sensorManager);
+        sensors.initSensor();
+    }
+
+    private SensorEventListener accSensorEventListener = new SensorEventListener() {
+
+        @Override
+        public void onSensorChanged(SensorEvent sensorEvent) {
+            float x = sensorEvent.values[0];
+            float y = sensorEvent.values[1];
+
+            if (x < -5) {// move right
+                RIVAL_DIRECTION = getRandomRivalDirection();
+                PLAYER_DIRECTION = RIGHT;
+            } else if (x > 5) {// move left
+                RIVAL_DIRECTION = getRandomRivalDirection();
+                PLAYER_DIRECTION = LEFT;
+            } else if (y < -3) {// move up
+                RIVAL_DIRECTION = getRandomRivalDirection();
+                PLAYER_DIRECTION = UP;
+            } else if (y > 5) {// move down
+                RIVAL_DIRECTION = getRandomRivalDirection();
+                PLAYER_DIRECTION = DOWN;
+            }
+        }
+        @Override
+        public void onAccuracyChanged(Sensor sensor, int i) {
+        }
+    };
+
+    protected void onResume() {
+        super.onResume();
+        sensorManager.registerListener(accSensorEventListener, sensors.getAccSensor(), SensorManager.SENSOR_DELAY_NORMAL);
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        sensorManager.unregisterListener(accSensorEventListener);
     }
 
 
@@ -398,7 +470,6 @@ public class Activity_Panel extends AppCompatActivity {
          main_LBL_time.setText("" + counter);
          Toast.makeText(this,"+50",Toast.LENGTH_SHORT).show();
          stepDetector.setStepCount(0);
-
      }
      if ((coin.getCoin_x() == rival.getX()) && (coin.getCoin_y() == rival.getY())){
          if(counter<50)
@@ -408,10 +479,6 @@ public class Activity_Panel extends AppCompatActivity {
          Toast.makeText(this,"Oh No...",Toast.LENGTH_SHORT).show();
          stepDetector.setStepCount(0);
      }
-
-
-
-
 
     }
 
