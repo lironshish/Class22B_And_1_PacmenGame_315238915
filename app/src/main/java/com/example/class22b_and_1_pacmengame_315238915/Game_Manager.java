@@ -9,9 +9,14 @@ public class Game_Manager {
 
     private int lives = MAX_LIVES;
 
+    //user details
+    private String userName;
+    private int score;
+
     //Default Constructor
     public Game_Manager() {
-
+        setScore(0);
+        setUserName("");
     }
 
     //Setters and Getters
@@ -33,4 +38,19 @@ public class Game_Manager {
 
     public static int getMaxLives() { return MAX_LIVES;}
 
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
+    public int getScore() {
+        return score;
+    }
+
+    public void setScore(int score) {
+        this.score = score;
+    }
 }
