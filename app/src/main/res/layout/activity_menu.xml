@@ -44,7 +44,7 @@
         />
 
     <Button
-        android:id="@+id/menu_BTN_Sensor_game"
+        android:id="@+id/menu_BTN_sensor_game"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/menu_BTN_buttons_game"
@@ -52,10 +52,22 @@
         android:backgroundTint="#4FB8AD"
         android:text="Sensor Game" />
 
+
+    <EditText
+        android:id="@+id/menu_LBL_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_below="@+id/menu_BTN_sensor_game"
+        android:hint="Enter Your Name"
+        />
+
+
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
+        android:layout_marginBottom="-62dp"
         android:src="@drawable/ic_reef" />
 
 </RelativeLayout>
