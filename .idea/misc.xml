@@ -3,7 +3,19 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/liron0/AndroidStudioProjects/Class22B_And_1_PacmenGame_315238915/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.1" />
+        <entry key="..\:/Users/liron0/AndroidStudioProjects/Class22B_And_1_PacmenGame_315238915/app/src/main/res/drawable/ic_launcher_background.xml" value="0.1" />
+        <entry key="..\:/Users/liron0/AndroidStudioProjects/Class22B_And_1_PacmenGame_315238915/app/src/main/res/layout/activity_buttons_game.xml" value="0.1" />
         <entry key="..\:/Users/liron0/AndroidStudioProjects/Class22B_And_1_PacmenGame_315238915/app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="..\:/Users/liron0/AndroidStudioProjects/Class22B_And_1_PacmenGame_315238915/app/src/main/res/layout/activity_menu.xml" value="0.152" />
+        <entry key="..\:/Users/liron0/AndroidStudioProjects/Class22B_And_1_PacmenGame_315238915/app/src/main/res/layout/activity_menu1.xml" value="0.1" />
+        <entry key="..\:/Users/liron0/AndroidStudioProjects/Class22B_And_1_PacmenGame_315238915/app/src/main/res/layout/activity_menu2.xml" value="0.18645833333333334" />
+        <entry key="..\:/Users/liron0/AndroidStudioProjects/Class22B_And_1_PacmenGame_315238915/app/src/main/res/layout/activity_panel.xml" value="0.1111111111111111" />
+        <entry key="..\:/Users/liron0/AndroidStudioProjects/Class22B_And_1_PacmenGame_315238915/app/src/main/res/layout/activity_rec_list.xml" value="0.12" />
+        <entry key="..\:/Users/liron0/AndroidStudioProjects/Class22B_And_1_PacmenGame_315238915/app/src/main/res/layout/activity_records_list.xml" value="0.240625" />
+        <entry key="..\:/Users/liron0/AndroidStudioProjects/Class22B_And_1_PacmenGame_315238915/app/src/main/res/layout/activity_top_ten_panel.xml" value="0.22239583333333332" />
+        <entry key="..\:/Users/liron0/AndroidStudioProjects/Class22B_And_1_PacmenGame_315238915/app/src/main/res/layout/buttons_game.xml" value="0.15416666666666667" />
+        <entry key="..\:/Users/liron0/AndroidStudioProjects/Class22B_And_1_PacmenGame_315238915/app/src/main/res/layout/sensor_game.xml" value="0.15416666666666667" />
       </map>
     </option>
   </component>
