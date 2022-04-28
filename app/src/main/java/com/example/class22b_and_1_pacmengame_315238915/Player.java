@@ -5,6 +5,8 @@ public class Player {
     private int x;
     private int y;
     private int direction;
+    private String PlayerName;
+    private int score = 0;
 
     //Default constructor
     public Player() { }
@@ -13,6 +15,8 @@ public class Player {
         setX(x);
         setY(y);
         setDirection(direction);
+        //setPlayerName(playerName);
+        //setScore(score);
     }
 
     //Setters and Getters
@@ -34,5 +38,21 @@ public class Player {
 
     public void setDirection(int direction) {
         this.direction = direction;
+    }
+
+    public String getPlayerName() {
+        return PlayerName;
+    }
+
+    public void setPlayerName(String playerName) {
+        PlayerName = playerName;
+    }
+
+    public int getScore() {
+        return score;
+    }
+
+    public void setScore(int score) {
+        this.score = score;
     }
 }
