@@ -1,20 +1,23 @@
 package com.example.class22b_and_1_pacmengame_315238915;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 
 import android.content.Context;
 import android.content.ContextWrapper;
+import android.content.Intent;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
-import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Toast;
+
+import com.google.android.gms.maps.MapFragment;
 import com.google.android.material.textview.MaterialTextView;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -108,6 +111,7 @@ public class Activity_Panel extends AppCompatActivity {
         sound = new Sounds();
 
     }
+
     //Init Functions
     private void InitGameView() {
         //Background
@@ -246,7 +250,9 @@ public class Activity_Panel extends AppCompatActivity {
     @Override
     protected void onPause() {
         super.onPause();
-        sensorManager.unregisterListener(accSensorEventListener);
+        if (sensorFlag == 1) {
+            sensorManager.unregisterListener(accSensorEventListener);
+        }
     }
 
 
@@ -435,15 +441,20 @@ public class Activity_Panel extends AppCompatActivity {
                 handler.postDelayed(new Runnable() {
                     @Override
                     public void run() {
-                        finish();
+//                        finish();
+                        replaceActivity();
                     }
                 }, 1500);
-
-
             }
         }
 
     }
+    private void replaceActivity() {
+        Intent intent = new Intent(this,Rec_List.class);
+        intent.putExtra("Bundle",bundle);
+        startActivity(intent);
+    }
+
 
     private void setPlayersOnStartingPoint(){
 

@@ -88,13 +88,20 @@ public class Activity_Menu extends AppCompatActivity {
             }
         });
 
+        menu_BTN_records_list.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                nextRecActivity();
+         }
+        });
+
     }
 
-
-//    public void nextActivity(){
-//        Intent game_page = new Intent(this, Activity_Panel.class);
-//        startActivity(game_page);
-//    }
+    public void nextRecActivity(){
+        Intent intent = new Intent(this,Rec_List.class);
+        intent.putExtra("Bundle",bundle);
+        startActivity(intent);
+    }
 
     @Override
     protected void onStop() {

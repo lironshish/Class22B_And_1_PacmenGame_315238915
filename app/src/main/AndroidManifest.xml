@@ -2,6 +2,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.class22b_and_1_pacmengame_315238915">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -9,11 +13,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="false"
         android:theme="@style/Theme.Class22B_And_1_PacmenGame_315238915">
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyCFbzsG8zok5PVvaJvuF7aIXEW7XyCXG5o" />
+
         <activity
             android:name=".Rec_List"
-            android:screenOrientation="portrait"
-            android:exported="false">
-        </activity>
+            android:exported="false"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".Activity_Menu"
             android:exported="true">
@@ -27,8 +35,7 @@
         <activity
             android:name=".Activity_Panel"
             android:exported="true"
-            android:screenOrientation="portrait"
-            />
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>
