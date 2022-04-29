@@ -3,10 +3,12 @@ package com.example.class22b_and_1_pacmengame_315238915;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
+import android.content.ContextWrapper;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
@@ -74,6 +76,10 @@ public class Activity_Panel extends AppCompatActivity {
     //Step Detector
     private Step_Detector stepDetector;
 
+    //Sounds
+    private Sounds sound;
+
+
     //Sensors
     private Sensors sensors;
     private SensorManager sensorManager;
@@ -101,6 +107,8 @@ public class Activity_Panel extends AppCompatActivity {
             sensors = new Sensors();
             initSensors();
         }
+        sound = new Sounds();
+
     }
     //Init Functions
     private void InitGameView() {
@@ -408,6 +416,7 @@ public class Activity_Panel extends AppCompatActivity {
         if((rival.getX() == player.getX()) && (rival.getY() == player.getY()))
         {
             panelGame[player.getX()][player.getY()].setVisibility(View.INVISIBLE);
+            sound.setMpAndPlay((ContextWrapper) getApplicationContext(),R.raw.sound_crash);
             if(gameManager.getLives()>1) {
                 gameManager.reduceLives();
                 panel_IMG_snails[gameManager.getLives()].setVisibility(View.INVISIBLE);
@@ -419,6 +428,7 @@ public class Activity_Panel extends AppCompatActivity {
             } else {
                 panel_IMG_snails[0].setVisibility(View.INVISIBLE);
                 stopTimer();
+                sound.setMpAndPlay((ContextWrapper) getApplicationContext(),R.raw.sound_game_over);
                 panelGame[player.getX()][player.getY()].setVisibility(View.INVISIBLE);
                 Toast.makeText(this,"Game Over",Toast.LENGTH_SHORT).show();
                 panel_IMG_game_over.setVisibility(View.VISIBLE);
@@ -457,8 +467,10 @@ public class Activity_Panel extends AppCompatActivity {
     public void AddRandomCoin()
     {
         panelGame[coin.getCoin_x()][coin.getCoin_y()].setVisibility(View.INVISIBLE);
-        coin.setCoin_x((int) (Math.random() * gameManager.getROWS()));
-        coin.setCoin_y((int) (Math.random() * gameManager.getCOLUMNS()));
+        do {
+            coin.setCoin_x((int) (Math.random() * gameManager.getROWS()));
+            coin.setCoin_y((int) (Math.random() * gameManager.getCOLUMNS()));
+        } while(coin.getCoin_x()!= player.getX() && coin.getCoin_x()!= rival.getX() && coin.getCoin_y()!= rival.getY()&& coin.getCoin_y()!= player.getY());
         panelGame[coin.getCoin_x()][coin.getCoin_y()].setImageResource(R.drawable.ic_starfish);
         panelGame[coin.getCoin_x()][coin.getCoin_y()].setVisibility(View.VISIBLE);
 
@@ -469,12 +481,14 @@ public class Activity_Panel extends AppCompatActivity {
 
  private void updateScore() {
      if ((coin.getCoin_x() == player.getX()) && (coin.getCoin_y() == player.getY())){
+         sound.setMpAndPlay((ContextWrapper) getApplicationContext(),R.raw.sound_player_hits_coin);
          counter += 50;
          main_LBL_time.setText("" + counter);
          Toast.makeText(this,"+50",Toast.LENGTH_SHORT).show();
          stepDetector.setStepCount(0);
      }
      if ((coin.getCoin_x() == rival.getX()) && (coin.getCoin_y() == rival.getY())){
+         sound.setMpAndPlay((ContextWrapper) getApplicationContext(),R.raw.sound_rival_hits_coin);
          if(counter<50)
              counter = 0;
          else
