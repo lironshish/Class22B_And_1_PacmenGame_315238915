@@ -79,11 +79,9 @@ public class Activity_Panel extends AppCompatActivity {
     //Sounds
     private Sounds sound;
 
-
     //Sensors
     private Sensors sensors;
     private SensorManager sensorManager;
-    private float sensorPosition;
     private int sensorFlag = 0;
 
     @Override
