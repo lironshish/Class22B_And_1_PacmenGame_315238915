@@ -33,4 +33,5 @@ public class Sensors {
     public void initSensor() {
         accSensor = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
     }
+
 }
