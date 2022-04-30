@@ -23,7 +23,6 @@ public class Rec_List extends AppCompatActivity {
         setContentView(R.layout.activity_rec_list);
         if (getIntent().getBundleExtra("Bundle") != null){
             this.bundle = getIntent().getBundleExtra("Bundle");
-            // gameManager.getPlayer().setPlayerName(bundle.getString("playerName"));
         } else {
             this.bundle = new Bundle();
         }
@@ -38,24 +37,10 @@ public class Rec_List extends AppCompatActivity {
                 .commit();
     }
 
-    //Init Fragments
-    private void InitMapFragments(){
-        Fragment_Map fragment = new Fragment_Map();
 
-        //Open Fragment
-        getSupportFragmentManager()
-                .beginTransaction()
-                .replace(R.id.frame_layout, fragment)
-                .commit();
 
-    }
-//    private void findViews(){
-//        rec_list_IMG_background = findViewById(R.id.rec_list_IMG_background);
-//        rec_list_LBL_Welcome = findViewById(R.id.rec_list_LBL_Welcome);
-//    }
 private void findViews() {
     top_ten_LBL_title = findViewById(R.id.game_top_ten_LBL_title);
-    top_ten_BTN_back = findViewById(R.id.game_top_ten_BTN_back);
     top_ten_LBL_map = findViewById(R.id.game_top_ten_LBL_map);
 }
 
