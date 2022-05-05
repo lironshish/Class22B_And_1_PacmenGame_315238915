@@ -1,11 +1,10 @@
-package com.example.class22b_and_1_pacmengame_315238915;
+package com.example.class22b_and_1_pacmengame_315238915.objects;
 
 public class Player {
 
     private int x;
     private int y;
     private int direction;
-
 
     //Default constructor
     public Player() { }
