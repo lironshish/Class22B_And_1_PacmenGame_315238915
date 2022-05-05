@@ -7,6 +7,7 @@
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 
     <application
+        android:name=".App"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -19,11 +20,11 @@
             android:value="AIzaSyCFbzsG8zok5PVvaJvuF7aIXEW7XyCXG5o" />
 
         <activity
-            android:name=".Rec_List"
+            android:name=".activities.Activity_Top_Ten_Panel"
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Activity_Menu"
+            android:name=".activities.Activity_Menu"
             android:exported="true">
             android:screenOrientation="portrait"
             <intent-filter>
@@ -33,7 +34,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".Activity_Panel"
+            android:name=".activities.Activity_Panel"
             android:exported="true"
             android:screenOrientation="portrait" />
     </application>
