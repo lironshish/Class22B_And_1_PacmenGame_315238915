@@ -7,9 +7,7 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
-
 import androidx.appcompat.app.AppCompatActivity;
-
 import com.example.class22b_and_1_pacmengame_315238915.Game_Manager;
 import com.example.class22b_and_1_pacmengame_315238915.R;
 
