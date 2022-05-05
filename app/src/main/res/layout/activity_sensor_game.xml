@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".Activity_Panel">
+    tools:context=".activities.Activity_Panel">
 
     <include layout="@layout/activity_panel" />
 
