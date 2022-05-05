@@ -1,4 +1,4 @@
-package com.example.class22b_and_1_pacmengame_315238915;
+package com.example.class22b_and_1_pacmengame_315238915.objects;
 
 import android.os.Handler;
 
