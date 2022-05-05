@@ -522,22 +522,22 @@ public class Activity_Panel extends AppCompatActivity {
 
 
  private void updateScore() {
-     if ((coin.getCoin_x() == player.getX()) && (coin.getCoin_y() == player.getY())){
-         sound.setMpAndPlay((ContextWrapper) getApplicationContext(),R.raw.sound_player_hits_coin);
-         counter += 50;
-         main_LBL_time.setText("" + counter);
-         Toast.makeText(this,"+50",Toast.LENGTH_SHORT).show();
-         stepDetector.setStepCount(0);
-     }
-     if ((coin.getCoin_x() == rival.getX()) && (coin.getCoin_y() == rival.getY())){
-         sound.setMpAndPlay((ContextWrapper) getApplicationContext(),R.raw.sound_rival_hits_coin);
-         if(counter<50)
-             counter = 0;
-         else
-             counter-=50;
-         Toast.makeText(this,"Oh No...",Toast.LENGTH_SHORT).show();
-         stepDetector.setStepCount(0);
-     }
+         if ((coin.getCoin_x() == player.getX()) && (coin.getCoin_y() == player.getY())) {
+             sound.setMpAndPlay((ContextWrapper) getApplicationContext(), R.raw.sound_player_hits_coin);
+             counter += 50;
+             main_LBL_time.setText("" + counter);
+             Toast.makeText(this, "+50", Toast.LENGTH_SHORT).show();
+             stepDetector.setStepCount(0);
+         }
+         if ((coin.getCoin_x() == rival.getX()) && (coin.getCoin_y() == rival.getY())) {
+             sound.setMpAndPlay((ContextWrapper) getApplicationContext(), R.raw.sound_rival_hits_coin);
+             if (counter < 50)
+                 counter = 0;
+             else
+                 counter -= 50;
+             Toast.makeText(this, "Oh No...", Toast.LENGTH_SHORT).show();
+             stepDetector.setStepCount(0);
+         }
 
     }
 

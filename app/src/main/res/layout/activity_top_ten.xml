@@ -16,6 +16,15 @@
         android:orientation="vertical">
 
 
+        <Button
+            android:id="@+id/TopTen_BTN_PlayAgain"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:backgroundTint="#4FB8AD"
+            android:text="Play Again!"
+            />
+
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/game_top_ten_LBL_title"
             android:layout_width="wrap_content"

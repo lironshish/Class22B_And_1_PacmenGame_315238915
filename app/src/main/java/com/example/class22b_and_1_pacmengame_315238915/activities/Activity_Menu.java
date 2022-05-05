@@ -23,7 +23,6 @@ public class Activity_Menu extends AppCompatActivity {
     private Bundle bundle;
     //User details
     private String userName;
-
     private Game_Manager game_manager;
 
     @Override
@@ -92,14 +91,16 @@ public class Activity_Menu extends AppCompatActivity {
         menu_BTN_records_list.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                nextRecActivity();
+                nextRecActivity("fromMenu");
          }
         });
 
     }
 
-    public void nextRecActivity(){
+    public void nextRecActivity(String fromMenu){
         Intent intent = new Intent(this, Activity_Top_Ten_Panel.class);
+        Bundle bundle = new Bundle();
+        bundle.putString("fromMenu",fromMenu);
         intent.putExtra("Bundle",bundle);
         startActivity(intent);
     }
@@ -112,7 +113,7 @@ public class Activity_Menu extends AppCompatActivity {
     private void replaceActivity(String game) {
         Intent intent = new Intent(this, Activity_Panel.class);
         Bundle bundle = new Bundle();
-        bundle.putString("playerName",userName);
+        bundle.putString("fromMenu",userName);
         bundle.putString("game",game);
         intent.putExtra("Bundle",bundle);
         startActivity(intent);
