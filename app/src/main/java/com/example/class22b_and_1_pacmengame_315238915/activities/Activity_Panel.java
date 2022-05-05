@@ -1,11 +1,10 @@
-package com.example.class22b_and_1_pacmengame_315238915;
+package com.example.class22b_and_1_pacmengame_315238915.activities;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
-
+import android.Manifest;
 import android.content.Context;
 import android.content.ContextWrapper;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
@@ -17,8 +16,22 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import com.google.android.gms.maps.MapFragment;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
+import com.example.class22b_and_1_pacmengame_315238915.Game_Manager;
+import com.example.class22b_and_1_pacmengame_315238915.Location_Manager;
+import com.example.class22b_and_1_pacmengame_315238915.MSPV3;
+import com.example.class22b_and_1_pacmengame_315238915.R;
+import com.example.class22b_and_1_pacmengame_315238915.Sensors;
+import com.example.class22b_and_1_pacmengame_315238915.objects.Coin;
+import com.example.class22b_and_1_pacmengame_315238915.objects.MyDB;
+import com.example.class22b_and_1_pacmengame_315238915.objects.Player;
+import com.example.class22b_and_1_pacmengame_315238915.objects.Record;
+import com.example.class22b_and_1_pacmengame_315238915.objects.Sounds;
+import com.example.class22b_and_1_pacmengame_315238915.objects.Step_Detector;
 import com.google.android.material.textview.MaterialTextView;
+import com.google.gson.Gson;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -29,8 +42,8 @@ public class Activity_Panel extends AppCompatActivity {
     public static final int UP = 1;
     public static final int DOWN = 2;
     public static final int RIGHT = 3;
-    public static final int PLAYER_START_POS_X = 4;
-    public static final int PLAYER_START_POS_Y = 1;
+    public static final int PLAYER_START_POS_X = 6;
+    public static final int PLAYER_START_POS_Y = 2;
     public static final int RIVAL_START_POS_X = 0;
     public static final int RIVAL_START_POS_Y = 0;
 
@@ -87,12 +100,16 @@ public class Activity_Panel extends AppCompatActivity {
     private SensorManager sensorManager;
     private int sensorFlag = 0;
 
+    Location_Manager locationManager;
+    private final MyDB myDB = MyDB.initMyDB();
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getIntent().getBundleExtra("Bundle") != null){
             this.bundle = getIntent().getBundleExtra("Bundle");
-           // gameManager.getPlayer().setPlayerName(bundle.getString("playerName"));
+            gameManager.setUserName(bundle.getString("playerName"));
         } else {
             this.bundle = new Bundle();
         }
@@ -109,6 +126,15 @@ public class Activity_Panel extends AppCompatActivity {
             initSensors();
         }
         sound = new Sounds();
+        locationManager = new Location_Manager(this);
+        //----- Get Location use permission and check -----
+        try {
+            if (ContextCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+                ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 101);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
     }
 
@@ -441,16 +467,25 @@ public class Activity_Panel extends AppCompatActivity {
                 handler.postDelayed(new Runnable() {
                     @Override
                     public void run() {
-//                        finish();
+                        Record rec = new Record()
+                                .setName(gameManager.getUserName())
+                                .setScore(counter)
+                                .setLon(locationManager.getLon())
+                                .setLat(locationManager.getLat());
+
+                        myDB.addRecord(rec);
+                        String json = new Gson().toJson(myDB);
+                        MSPV3.getMe().putString("MY_DB", json);
                         replaceActivity();
+                        finish();
                     }
-                }, 1500);
+                }, 500);
             }
         }
 
     }
     private void replaceActivity() {
-        Intent intent = new Intent(this,Rec_List.class);
+        Intent intent = new Intent(this, Activity_Top_Ten_Panel.class);
         intent.putExtra("Bundle",bundle);
         startActivity(intent);
     }
@@ -482,8 +517,6 @@ public class Activity_Panel extends AppCompatActivity {
         } while(coin.getCoin_x()!= player.getX() && coin.getCoin_x()!= rival.getX() && coin.getCoin_y()!= rival.getY()&& coin.getCoin_y()!= player.getY());
         panelGame[coin.getCoin_x()][coin.getCoin_y()].setImageResource(R.drawable.ic_starfish);
         panelGame[coin.getCoin_x()][coin.getCoin_y()].setVisibility(View.VISIBLE);
-
-
     }
 
 
