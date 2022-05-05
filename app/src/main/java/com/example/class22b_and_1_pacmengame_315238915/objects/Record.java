@@ -1,6 +1,6 @@
 package com.example.class22b_and_1_pacmengame_315238915.objects;
 
-public class Record {
+public class Record implements Comparable {
     private int score = 0;
     private String name = "";
     private double lat = 0.0;
@@ -45,4 +45,11 @@ public class Record {
         return this;
     }
 
+    @Override
+    public int compareTo(Object o) {
+        Record other = (Record) o;
+        if (this.score> other.score)
+            return -1;
+        return 1;
+    }
 }

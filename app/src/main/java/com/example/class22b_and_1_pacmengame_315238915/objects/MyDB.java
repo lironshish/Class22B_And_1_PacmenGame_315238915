@@ -1,6 +1,7 @@
 package com.example.class22b_and_1_pacmengame_315238915.objects;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class MyDB {
     private ArrayList<Record> records;
@@ -29,9 +30,9 @@ public class MyDB {
         return records;
     }
 
-//    public void  sortByScore () {
-//        Collections.sort(records);
-//    }
+    public void  sortByScore () {
+        Collections.sort(records);
+    }
 
 
 

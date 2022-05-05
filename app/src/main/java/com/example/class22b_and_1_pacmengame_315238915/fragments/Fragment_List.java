@@ -40,12 +40,11 @@ public class Fragment_List extends Fragment {
     private void initViews() {
         String js = MSPV3.getMe().getString("MY_DB", "");
         MyDB md = new Gson().fromJson(js, MyDB.class);
-        //md.sortByScore();
+        md.sortByScore();
         for (int i = 0; i < md.getRecords().size(); i++) {
             Record winner = md.getSpecificRecord(i);
             allWinners[i].setVisibility(View.VISIBLE);
             allWinners[i].setText(i+1+". "+winner.getName()+"\n  Score: "+winner.getScore());
-
             allWinners[i].setOnClickListener(v -> callBackList.locateOnMap(winner.getLat(),winner.getLon(), winner.getName()));
 
         }
