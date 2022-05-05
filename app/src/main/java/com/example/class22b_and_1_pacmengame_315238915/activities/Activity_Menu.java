@@ -1,6 +1,4 @@
-package com.example.class22b_and_1_pacmengame_315238915;
-
-import androidx.appcompat.app.AppCompatActivity;
+package com.example.class22b_and_1_pacmengame_315238915.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,6 +7,11 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.class22b_and_1_pacmengame_315238915.Game_Manager;
+import com.example.class22b_and_1_pacmengame_315238915.R;
 
 public class Activity_Menu extends AppCompatActivity {
 
@@ -50,6 +53,7 @@ public class Activity_Menu extends AppCompatActivity {
         menu_BTN_records_list = findViewById(R.id.menu_BTN_Records_list);
         menu_LBL_user_name = findViewById(R.id.menu_LBL_name);
         menu_BTN_login = findViewById(R.id.menu_BTN_login);
+
     }
 
     private void hideKeybaord(View v) {
@@ -62,8 +66,8 @@ public class Activity_Menu extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 hideKeybaord(v);
+                userName = menu_LBL_user_name.getText().toString();
                 game_manager.setUserName(menu_LBL_user_name.getText().toString());
-
                 menu_BTN_Sensor_game.setVisibility(View.VISIBLE);
                 menu_BTN_buttons_game.setVisibility(View.VISIBLE);
                 menu_BTN_records_list.setVisibility(View.VISIBLE);
@@ -84,7 +88,6 @@ public class Activity_Menu extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 replaceActivity("buttons");
-              //  nextActivity();
             }
         });
 
@@ -98,7 +101,7 @@ public class Activity_Menu extends AppCompatActivity {
     }
 
     public void nextRecActivity(){
-        Intent intent = new Intent(this,Rec_List.class);
+        Intent intent = new Intent(this, Activity_Top_Ten_Panel.class);
         intent.putExtra("Bundle",bundle);
         startActivity(intent);
     }
@@ -109,7 +112,7 @@ public class Activity_Menu extends AppCompatActivity {
     }
 
     private void replaceActivity(String game) {
-        Intent intent = new Intent(this,Activity_Panel.class);
+        Intent intent = new Intent(this, Activity_Panel.class);
         Bundle bundle = new Bundle();
         bundle.putString("playerName",userName);
         bundle.putString("game",game);
