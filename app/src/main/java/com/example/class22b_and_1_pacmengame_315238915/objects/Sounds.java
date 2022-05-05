@@ -1,4 +1,4 @@
-package com.example.class22b_and_1_pacmengame_315238915;
+package com.example.class22b_and_1_pacmengame_315238915.objects;
 
 import android.content.ContextWrapper;
 import android.media.MediaPlayer;
@@ -9,11 +9,6 @@ public class Sounds {
 
     public Sounds() {
         MediaPlayer mp = new MediaPlayer();
-    }
-
-
-    public MediaPlayer getMp() {
-        return this.mp;
     }
 
     public void setMpAndPlay(ContextWrapper cw, int sample) {
