@@ -19,16 +19,11 @@
 
 
 <div>
-  <img src="https://user-images.githubusercontent.com/62293320/173194207-0a54cef6-ea38-414d-b065-759684827579.png" width="40" height="40"/>;
-   <img src="https://user-images.githubusercontent.com/62293320/173194224-e444c8c3-8a9f-4861-8578-bad8a6911ca7.png" width="40" height="40"/>;
-    <img src="https://user-images.githubusercontent.com/62293320/173194250-13b4f029-4192-401b-8d2c-dd33e2322a51.png"  width="40" height="40"/>;
-    <img src="https://user-images.githubusercontent.com/62293320/173194277-db598ed6-a727-40f0-8402-02fc92cb5f6d.png"  width="40" height="40"/>;
-    <img src="https://user-images.githubusercontent.com/62293320/173194319-0c089c61-41f6-4f2e-a1b0-f2af268d8f47.png" width="40" height="40"/>;
+  <img src="https://user-images.githubusercontent.com/62293320/173194207-0a54cef6-ea38-414d-b065-759684827579.png" width="200" height="300"/>
+   <img src="https://user-images.githubusercontent.com/62293320/173194224-e444c8c3-8a9f-4861-8578-bad8a6911ca7.png"  width="200" height="300"/>
+    <img src="https://user-images.githubusercontent.com/62293320/173194250-13b4f029-4192-401b-8d2c-dd33e2322a51.png"  width="200" height="300"/>
+    <img src="https://user-images.githubusercontent.com/62293320/173194277-db598ed6-a727-40f0-8402-02fc92cb5f6d.png"  width="200" height="300"/>
+    <img src="https://user-images.githubusercontent.com/62293320/173194319-0c089c61-41f6-4f2e-a1b0-f2af268d8f47.png" width="200" height="300"/>
 </div>
 
 
-![image](https://user-images.githubusercontent.com/62293320/173194207-0a54cef6-ea38-414d-b065-759684827579.png)
-![image](https://user-images.githubusercontent.com/62293320/173194224-e444c8c3-8a9f-4861-8578-bad8a6911ca7.png)
-![image](https://user-images.githubusercontent.com/62293320/173194250-13b4f029-4192-401b-8d2c-dd33e2322a51.png)
-![image](https://user-images.githubusercontent.com/62293320/173194277-db598ed6-a727-40f0-8402-02fc92cb5f6d.png)
-![image](https://user-images.githubusercontent.com/62293320/173194319-0c089c61-41f6-4f2e-a1b0-f2af268d8f47.png)
