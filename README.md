@@ -15,7 +15,7 @@
 ### 🔘Sensors Game - The player movement can be controlled via the X-exis Sensors of your device in order to avoid the shark.
 
 
-## 📱 There are anothere screen - Top 10 Screen - On that screen you'll see 2 fragments. On the top one, you can see the Top 10 players and them  score. On the second one, you'll see Google Map fragment. Whenever you click one of the players on the top 10 list, the map will zoom to the place where the player played the game.
+### 📱 There are anothere screen - Top 10 Screen - On that screen you'll see 2 fragments. On the top one, you can see the Top 10 players and them  score. On the second one, you'll see Google Map fragment. Whenever you click one of the players on the top 10 list, the map will zoom to the place where the player played the game.
 
 
 <div>
